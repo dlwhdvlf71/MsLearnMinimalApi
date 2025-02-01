@@ -1,0 +1,21 @@
+﻿@MsLearnMinimalApi_HostAddress = https://localhost:7070
+
+
+
+###
+
+GET {{MsLearnMinimalApi_HostAddress}}/todo
+
+###
+
+POST {{MsLearnMinimalApi_HostAddress}}/todo
+Content-Type: application/json
+{
+  "name": "Learn Minimal APIs",
+  "isComplete": false
+}
+###
+
+GET {{MsLearnMinimalApi_HostAddress}}/todo/2
+
+###
