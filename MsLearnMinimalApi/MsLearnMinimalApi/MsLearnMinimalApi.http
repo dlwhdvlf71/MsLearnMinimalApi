@@ -19,3 +19,15 @@ Content-Type: application/json
 GET {{MsLearnMinimalApi_HostAddress}}/todo/2
 
 ###
+
+POST {{MsLearnMinimalApi_HostAddress}}/todo/create
+Content-Type: application/json
+
+{
+  "TodoDto": {
+    "name": "Learn Minimal APIs",
+    "isComplete": false
+  }
+}
+
+###

@@ -29,6 +29,8 @@ var app = builder.Build();
 
 #region MapGroup 사용방법
 
+
+
 var todoMapGroup = app.MapGroup("/todo");
 
 todoMapGroup.MapGet("/", async (TodoDb db) =>
@@ -43,6 +45,19 @@ todoMapGroup.MapPost("/", async (Todo todo, TodoDb db) =>
     await db.SaveChangesAsync();
     return Results.Created($"/todo/{todo.Id}", todo);
 });
+
+todoMapGroup.MapPost("/create", async(TodoRequest todoRequest, TodoDb db) =>
+{
+    var todo = new Todo
+    {
+        Name = todoRequest.TodoDto.Name,
+        IsComplete = todoRequest.TodoDto.IsComplete
+    };
+    db.Todo.Add(todo);
+    await db.SaveChangesAsync();
+    return Results.Created($"/todo/{todo.Id}", todo);
+});
+
 
 todoMapGroup.MapGet("/{id}", async (int id, TodoDb db) =>
 {
